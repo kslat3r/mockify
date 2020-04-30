@@ -6,6 +6,7 @@ RUN go get github.com/sirupsen/logrus
 COPY . /go/src/mockify/
 WORKDIR /go/src/mockify/
 
+RUN CGO_ENABLED=0 go get ./...
 RUN CGO_ENABLED=0 go build -v -o mockify app/cmd/mockify.go
 
 FROM alpine:latest
